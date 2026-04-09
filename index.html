@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Kandui Residence - Proposta de Permuta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bege: #E8E4DD;
+            --verde-escuro: #1A3A32;
+            --verde-medio: #2C4A42;
+            --marrom-texto: #8B7D6B;
+            --marrom-escuro: #5A4E42;
+            --branco: #FDFCFA;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bege);
+            color: var(--marrom-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--branco);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(139, 125, 107, 0.2);
+        }
+
+        .header h1 {
+            font-family: 'Cormorant', serif;
+            font-size: 56px;
+            font-weight: 300;
+            color: var(--marrom-escuro);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--marrom-texto);
+            font-weight: 400;
+        }
+
+        .header .location {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--marrom-texto);
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+
+        /* SECTION TITLES */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant', serif;
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--marrom-escuro);
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* INFO CARDS */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: var(--branco);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(139, 125, 107, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26, 58, 50, 0.08);
+        }
+
+        .info-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--marrom-texto);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-family: 'Cormorant', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            line-height: 1;
+        }
+
+        /* UNIDADES BANNER */
+        .unidades-banner {
+            background: var(--verde-escuro);
+            color: var(--branco);
+            padding: 60px 50px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .unidades-title {
+            font-family: 'Cormorant', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .unidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .unidade-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .unidade-numero {
+            font-family: 'Cormorant', serif;
+            font-size: 56px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .unidade-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+        }
+
+        .unidade-detail {
+            font-size: 10px;
+            margin-top: 8px;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        /* TABLES */
+        .tables-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .table-section {
+            background: var(--branco);
+            border: 1px solid rgba(139, 125, 107, 0.15);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: var(--verde-escuro);
+            color: var(--branco);
+            padding: 20px 25px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .table-header.terreo {
+            background: var(--verde-medio);
+        }
+
+        .table-header.pav1 {
+            background: #3A5A52;
+        }
+
+        .table-header.rooftop {
+            background: #8B7D6B;
+        }
+
+        .table-header.externa {
+            background: #2C4A42;
+        }
+
+        .table-header.wellness {
+            background: #1A3A32;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: rgba(232, 228, 221, 0.3);
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 500;
+            color: var(--marrom-escuro);
+            border-bottom: 1px solid rgba(139, 125, 107, 0.15);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        th:first-child {
+            width: 65%;
+        }
+
+        td {
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(139, 125, 107, 0.08);
+            color: var(--marrom-texto);
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background: rgba(232, 228, 221, 0.2);
+        }
+
+        .total-row {
+            background: rgba(26, 58, 50, 0.03) !important;
+        }
+
+        .total-row td {
+            border-top: 2px solid rgba(26, 58, 50, 0.2);
+            padding: 18px 20px;
+            color: var(--verde-escuro);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* GRAND TOTALS */
+        .grand-total {
+            background: var(--branco);
+            border: 1px solid rgba(139, 125, 107, 0.15);
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .grand-total-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--marrom-texto);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .grand-total-value {
+            font-family: 'Cormorant', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--verde-escuro);
+        }
+
+        /* UNIT TYPE SECTIONS */
+        .tipo-section {
+            margin-bottom: 100px;
+        }
+
+        .tipo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tipo-title {
+            font-family: 'Cormorant', serif;
+            font-size: 38px;
+            font-weight: 400;
+            color: var(--verde-escuro);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .tipo-subtitle {
+            font-size: 13px;
+            color: var(--marrom-texto);
+            line-height: 1.8;
+        }
+
+        .tipo-subtitle strong {
+            color: var(--marrom-escuro);
+            font-weight: 600;
+        }
+
+        /* FINAL TOTAL */
+        .final-total {
+            background: var(--verde-escuro);
+            color: var(--branco);
+            padding: 60px 50px;
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .final-total-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        .final-total-value {
+            font-family: 'Cormorant', serif;
+            font-size: 72px;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .final-total-detail {
+            font-size: 13px;
+            margin-top: 20px;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        /* DIVIDERS */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--marrom-texto);
+            margin: 60px auto;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .tables-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-total-value {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>villa kandui residence</h1>
+        <div class="subtitle">PROPOSTA DE PERMUTA • ECOSSISTEMA VILA KANDUI</div>
+        <div class="location">PENÍNSULA DE MARAÚ, BAHIA</div>
+    </div>
+
+    <div class="container">
+        <!-- UNIDADES -->
+        <div class="unidades-banner">
+            <div class="unidades-title">Unidades do Empreendimento</div>
+            <div class="unidades-grid">
+                <div class="unidade-card">
+                    <div class="unidade-numero">12</div>
+                    <div class="unidade-label">Casas Triplex</div>
+                    <div class="unidade-detail">3 COM VISTA MAR</div>
+                </div>
+                <div class="unidade-card">
+                    <div class="unidade-numero">4</div>
+                    <div class="unidade-label">Apartamentos</div>
+                    <div class="unidade-detail">2 TORRES × 2 APTOS</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INDICADORES -->
+        <div class="section">
+            <div class="section-title">o terreno</div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">Área do Lote</div>
+                    <div class="info-value">2.500 m²</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Área de Ocupação</div>
+                    <div class="info-value">1.409 m²</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Taxa de Ocupação</div>
+                    <div class="info-value">56,36%</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Coef. Aproveitamento</div>
+                    <div class="info-value">0,28</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ÁREAS COMUNS -->
+        <div class="tipo-section">
+            <div class="tipo-header">
+                <div class="tipo-title">áreas comuns</div>
+            </div>
+
+            <div class="tables-wrapper">
+                <div class="table-section">
+                    <div class="table-header externa">Área Externa</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vagas (12 unidades)</td>
+                                <td>152 m²</td>
+                            </tr>
+                            <tr>
+                                <td>Portaria + Estação Golf</td>
+                                <td>32 m²</td>
+                            </tr>
+                            <tr>
+                                <td>Área de Serviços</td>
+                                <td>32 m²</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td>216 m²</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header wellness">Área Wellness</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Área de Apoio Bike e Prancha</td>
+                                <td>15 m²</td>
+                            </tr>
+                            <tr>
+                                <td>Sauna</td>
+                                <td>15 m²</td>
+                            </tr>
+                            <tr>
+                                <td>Academia</td>
+                                <td>32 m²</td>
+                            </tr>
+                            <tr>
+                                <td>Área Social e Bar</td>
+                                <td>39 m²</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td>101 m²</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grand-total">
+                <div class="grand-total-label">Total Áreas Comuns</div>
+                <div class="grand-total-value">317 m²</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- CASA -->
+        <div class="tipo-section">
+            <div class="tipo-header">
+                <div class="tipo-title">casa triplex</div>
+                <div class="tipo-subtitle">
+                    <strong>12 unidades</strong> • Área Bruta: 92 m² • Área Interna: 180 m² • Total: 2.160 m²
+                </div>
+            </div>
+
+            <div class="tables-wrapper">
+                <div class="table-section">
+                    <div class="table-header terreo">Térreo</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody id="casa-terreo-body"></tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td id="casa-terreo-total"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header pav1">1º Pavimento</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody id="casa-pav1-body"></tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td id="casa-pav1-total"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header rooftop">Rooftop</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody id="casa-rooftop-body"></tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td id="casa-rooftop-total"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grand-total">
+                <div class="grand-total-label">Área por Unidade</div>
+                <div class="grand-total-value" id="casa-grand-total"></div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- APTO -->
+        <div class="tipo-section">
+            <div class="tipo-header">
+                <div class="tipo-title">apartamento</div>
+                <div class="tipo-subtitle">
+                    <strong>4 unidades em 2 torres</strong> • Área Bruta: 85 m² • Torre 1: Térreo + 1º Pav • Torre 2: 1º Pav + Rooftop • Total: 904 m²
+                </div>
+            </div>
+
+            <div class="tables-wrapper">
+                <div class="table-section">
+                    <div class="table-header terreo">Térreo + 1º Pav (Torre 1)</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody id="apto-torre1-body"></tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td id="apto-torre1-total"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header pav1">1º Pav + Rooftop (Torre 2)</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ambiente</th>
+                                <th>Área</th>
+                            </tr>
+                        </thead>
+                        <tbody id="apto-torre2-body"></tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td id="apto-torre2-total"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grand-total">
+                <div class="grand-total-label">Área por Unidade (média)</div>
+                <div class="grand-total-value" id="apto-grand-total"></div>
+            </div>
+        </div>
+
+        <!-- TOTAL FINAL -->
+        <div class="final-total">
+            <div class="final-total-label">Área Total Construída</div>
+            <div class="final-total-value">709 m²</div>
+            <div class="final-total-detail">
+                12 Casas (180m²) + 4 Apartamentos (226m²) + Áreas Comuns (317m²)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dados = [
+            { area: 3, nome: "Banheiro 1 - Apto", nivel: "TERREO" },
+            { area: 3, nome: "Banheiro 1 - Casa", nivel: "TERREO" },
+            { area: 3, nome: "Banheiro Suite - Apto", nivel: "1 PAV" },
+            { area: 4, nome: "Banheiro 2 - Apto", nivel: "TERREO" },
+            { area: 4, nome: "Banheiro Suite 2- Casa", nivel: "1 PAV" },
+            { area: 5, nome: "Banheiro 1 - Apto", nivel: "1 PAV" },
+            { area: 5, nome: "Dorm. 1 - Apto", nivel: "1 PAV" },
+            { area: 5, nome: "Dorm. 1 - Casa", nivel: "TERREO" },
+            { area: 5, nome: "Escritório - Casa", nivel: "1 PAV" },
+            { area: 5, nome: "Piscina - Apto", nivel: "ROOFTOP" },
+            { area: 5, nome: "Piscina - Casa", nivel: "ROOFTOP" },
+            { area: 6, nome: "Banheiro Suite 1 - Casa", nivel: "1 PAV" },
+            { area: 6, nome: "Dorm. 2 - Apto", nivel: "1 PAV" },
+            { area: 6, nome: "Varanda - Casa", nivel: "1 PAV" },
+            { area: 7, nome: "Piscina - Casa", nivel: "TERREO" },
+            { area: 9, nome: "Suíte 1 - Apto", nivel: "1 PAV" },
+            { area: 9, nome: "Suíte 2 - Apto", nivel: "TERREO" },
+            { area: 9, nome: "Varanda - Apto", nivel: "1 PAV" },
+            { area: 13, nome: "Suíte 2 - Casa", nivel: "1 PAV" },
+            { area: 13, nome: "Varanda - Apto", nivel: "TERREO" },
+            { area: 14, nome: "Suíte 1 - Apto", nivel: "TERREO" },
+            { area: 17, nome: "Suíte 1 - Casa", nivel: "1 PAV" },
+            { area: 27, nome: "Deck - Casa", nivel: "TERREO" },
+            { area: 32, nome: "Sala de Estar / Cozinha - Apto", nivel: "TERREO" },
+            { area: 33, nome: "Sala de Estar / Cozinha - Apto", nivel: "1 PAV" },
+            { area: 38, nome: "Sala de Estar / Cozinha - Casa", nivel: "TERREO" },
+            { area: 44, nome: "Rooftop - Casa", nivel: "ROOFTOP" },
+            { area: 76, nome: "Rooftop - Apto", nivel: "ROOFTOP" }
+        ];
+
+        const organizado = {
+            casa: { terreo: {}, pav1: {}, rooftop: {} },
+            apto: { terreo: {}, pav1: {}, rooftop: {} }
+        };
+
+        dados.forEach(item => {
+            const tipo = item.nome.toLowerCase().includes('- casa') ? 'casa' : 'apto';
+            let nivel = item.nivel.toLowerCase();
+            if (nivel.includes('terreo')) nivel = 'terreo';
+            else if (nivel.includes('1 pav')) nivel = 'pav1';
+            else if (nivel.includes('rooftop')) nivel = 'rooftop';
+            const ambiente = item.nome.replace(/ - (Casa|Apto)$/i, '');
+            if (!organizado[tipo][nivel][ambiente]) organizado[tipo][nivel][ambiente] = 0;
+            organizado[tipo][nivel][ambiente] += item.area;
+        });
+
+        function renderTabela(dados, bodyId, totalId) {
+            const tbody = document.getElementById(bodyId);
+            let total = 0;
+            const sorted = Object.entries(dados).sort((a, b) => b[1] - a[1]);
+            sorted.forEach(([ambiente, area]) => {
+                const row = tbody.insertRow();
+                row.insertCell(0).textContent = ambiente;
+                row.insertCell(1).textContent = `${area} m²`;
+                total += area;
+            });
+            document.getElementById(totalId).textContent = `${total} m²`;
+            return total;
+        }
+
+        let casaTotal = 0;
+        casaTotal += renderTabela(organizado.casa.terreo, 'casa-terreo-body', 'casa-terreo-total');
+        casaTotal += renderTabela(organizado.casa.pav1, 'casa-pav1-body', 'casa-pav1-total');
+        casaTotal += renderTabela(organizado.casa.rooftop, 'casa-rooftop-body', 'casa-rooftop-total');
+        document.getElementById('casa-grand-total').textContent = `${casaTotal} m²`;
+
+        const torre1 = { ...organizado.apto.terreo };
+        Object.entries(organizado.apto.pav1).forEach(([amb, area]) => {
+            if (torre1[amb]) torre1[amb] += area;
+            else torre1[amb] = area;
+        });
+        const torre1Total = renderTabela(torre1, 'apto-torre1-body', 'apto-torre1-total');
+
+        const torre2 = { ...organizado.apto.pav1 };
+        Object.entries(organizado.apto.rooftop).forEach(([amb, area]) => {
+            if (torre2[amb]) torre2[amb] += area;
+            else torre2[amb] = area;
+        });
+        const torre2Total = renderTabela(torre2, 'apto-torre2-body', 'apto-torre2-total');
+
+        const aptoMedia = Math.round((torre1Total + torre2Total) / 2);
+        document.getElementById('apto-grand-total').textContent = `${aptoMedia} m²`;
+    </script>
+</body>
+</html>
